@@ -63,6 +63,10 @@ public class MotoristaService {
 
     }
 
+    public List<MotoristaDTO> findByDriverStatus(String status){
+        List<MotoristaDTO> driver = motoristaRepository.findyByStatus(status);
+        return driver;
+    }
 
 }
 

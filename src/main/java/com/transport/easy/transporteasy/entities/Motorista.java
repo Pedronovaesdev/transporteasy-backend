@@ -1,5 +1,6 @@
 package com.transport.easy.transporteasy.entities;
 
+import com.transport.easy.transporteasy.entities.enums.StatusMotorista;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,5 +23,7 @@ public class Motorista implements Serializable {
     private String email;
     private String telefone;
 
+    @Enumerated(EnumType.STRING)
+    private StatusMotorista status;
 
 }
