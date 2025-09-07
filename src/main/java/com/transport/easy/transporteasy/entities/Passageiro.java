@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -21,4 +22,10 @@ public class Passageiro implements Serializable {
     private String nome;
     private String email;
     private String telefone;
+
+    @OneToOne
+    @JoinColumn(name = "rota_id")
+    private Rota rota;
+
+
 }
