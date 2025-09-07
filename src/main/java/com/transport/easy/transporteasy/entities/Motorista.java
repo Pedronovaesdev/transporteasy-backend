@@ -26,4 +26,8 @@ public class Motorista implements Serializable {
     @Enumerated(EnumType.STRING)
     private StatusMotorista status;
 
+    @ManyToOne
+    @JoinColumn(name = "vehicle_id")
+    private Vehicle vehicle;
+
 }

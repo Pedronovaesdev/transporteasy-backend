@@ -27,7 +27,6 @@ public class MotoristaService {
                 .collect(Collectors.toList());
 
         return motoristasDTOs;
-
     }
 
     public MotoristaDTO findById(Long id){
