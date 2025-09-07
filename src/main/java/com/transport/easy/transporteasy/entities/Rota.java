@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -22,4 +23,11 @@ public class Rota implements Serializable {
     private String bairro;
     private String cidade;
     private int numero;
+
+    @ManyToOne
+    @JoinColumn(name = "motorista_id")
+    private Motorista motorista;
+
+   @OneToOne(mappedBy = "rota",cascade = CascadeType.ALL)
+    private Passageiro passageiro;
 }
