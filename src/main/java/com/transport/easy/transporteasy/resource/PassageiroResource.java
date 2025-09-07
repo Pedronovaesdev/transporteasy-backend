@@ -40,7 +40,7 @@ public class PassageiroResource {
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<PassageiroDTO> update(@PathVariable Long id, @RequestBody PassageiroDTO passageiroDTO){
-        passageiroDTO = passageiroService.update(id,passageiroDTO);
-        return ResponseEntity.ok().body(passageiroDTO);
+        PassageiroDTO obj = passageiroService.update(id,passageiroDTO);
+        return ResponseEntity.ok().body(obj);
     }
 }
