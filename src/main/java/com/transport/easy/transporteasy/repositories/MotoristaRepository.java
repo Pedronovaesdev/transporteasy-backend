@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface MotoristaRepository extends JpaRepository<Motorista, Long> {
-    List<MotoristaDTO> findyByStatus(String status);
+    List<MotoristaDTO> findByStatus(String status);
 }
