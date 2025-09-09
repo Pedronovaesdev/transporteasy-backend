@@ -1,9 +1,12 @@
 package com.transport.easy.transporteasy.services;
 
 import com.transport.easy.transporteasy.entities.Motorista;
+import com.transport.easy.transporteasy.entities.Passageiro;
 import com.transport.easy.transporteasy.entities.Rota;
 import com.transport.easy.transporteasy.entitiesDTO.MotoristaDTO;
 import com.transport.easy.transporteasy.entitiesDTO.RotaDTO;
+import com.transport.easy.transporteasy.repositories.MotoristaRepository;
+import com.transport.easy.transporteasy.repositories.PassageiroRepository;
 import com.transport.easy.transporteasy.repositories.RotaRepository;
 import com.transport.easy.transporteasy.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,12 @@ public class RotaService {
 
     @Autowired
     private RotaRepository rotaRepository;
+
+    @Autowired
+    private MotoristaRepository motoristaRepository;
+
+    @Autowired
+    private PassageiroRepository passageiroRepository;
 
 
     public List<RotaDTO> findAll(){
@@ -38,7 +47,9 @@ public class RotaService {
         return new RotaDTO(entidade);
     }
 
-    public RotaDTO create(RotaDTO dto) {
+    public RotaDTO create(Long idPassageiro,Long idMotorista, RotaDTO dto) {
+        Passageiro passageiro = passageiroRepository.findById(idPassageiro).orElseThrow(()-> new ResourceNotFoundException("passageiro nao encontrado"));
+        Motorista motorista = motoristaRepository.findById(idMotorista).orElseThrow(()-> new ResourceNotFoundException("motorista nao encontrado"));
 
         Rota entidade = new Rota();
         entidade.setRua(dto.getRua());
