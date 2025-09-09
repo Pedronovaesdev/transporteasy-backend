@@ -28,9 +28,9 @@ public class RotaResource {
         return ResponseEntity.ok().body(obj);
     }
 
-    @PostMapping
-    public ResponseEntity<RotaDTO> create(@RequestBody RotaDTO rotaDTO){
-        RotaDTO obj = rotaService.create(rotaDTO);
+    @PostMapping(value = "/passageiro/{idPassageiro}/motorista/{idMotorista}")
+    public ResponseEntity<RotaDTO> create(@PathVariable Long idPassageiro,@PathVariable Long idMotorista, @RequestBody RotaDTO rotaDTO){
+        RotaDTO obj = rotaService.create(idPassageiro, idMotorista, rotaDTO);
         return ResponseEntity.ok().body(obj);
     }
 
