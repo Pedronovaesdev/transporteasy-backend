@@ -32,6 +32,12 @@ public class MotoristaResource {
         return ResponseEntity.ok().body(obj);
     }
 
+    @GetMapping(value = "/status")
+    public ResponseEntity<List<MotoristaDTO>> findByStatus(@RequestParam String status){
+        List<MotoristaDTO> list = motoristaService.findByDriverStatus(status);
+        return ResponseEntity.ok().body(list);
+    }
+
     @PostMapping
     public ResponseEntity<MotoristaDTO> create(@RequestBody MotoristaDTO motoristaDTO){
         MotoristaDTO obj = motoristaService.create(motoristaDTO);
